@@ -1,7 +1,3 @@
-Here’s a detailed **README** file for your **Grey Chair Property Management App**:
-
----
-
 # **Grey Chair Property Management App**
 
 ## **Overview**
