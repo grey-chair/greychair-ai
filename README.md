@@ -1,183 +1,192 @@
-# **Grey Chair Property Management App**
+# **Grey Chair: Property Management Platform**
 
 ## **Overview**
-Grey Chair is a comprehensive property management platform designed to streamline operations for tenants, property managers, contractors, and owners. Built with Firebase as the backend, the app offers features like lease management, maintenance tracking, appliance monitoring, financial planning, and real-time notifications.
+Grey Chair is a next-generation property management platform that streamlines property operations, tenant communications, and financial planning. It is designed to serve multiple user roles, including **property managers**, **tenants**, **contractors**, **owners**, **HOAs**, and **prospective tenants**. Built on Firebase for real-time data management, Grey Chair offers transparency, efficiency, and actionable insights to all stakeholders.
+
+### **Positioning Statement**
+Grey Chair stands out by combining **property health scoring**, **tenant scoring**, and **reserve fund planning** into one seamless platform. By empowering property managers with tools for proactive decision-making and providing tenants with transparency and convenience, Grey Chair bridges the gap between property management and modern user expectations.
 
 ---
 
-## **Features**
-### **For Tenants**
-- Access lease details, rent payments, and due dates.
-- Submit and track maintenance requests.
-- View notifications for rent reminders and property updates.
-- Manage personal profiles and upload profile photos.
-
-### **For Property Managers**
-- Manage properties, units, and tenant assignments.
-- Track maintenance workflows and assign contractors.
-- Monitor appliance conditions and schedule preventative maintenance.
-- Generate and manage financial reserves for future repairs.
-
-### **For Contractors**
-- Receive maintenance assignments with detailed descriptions.
-- Update request statuses and add progress notes.
-- Communicate task updates directly with property managers.
-
-### **For Owners and HOAs**
-- View property health scores based on maintenance history and tenant feedback.
-- Monitor financial reserves and property conditions.
-- Collaborate with property managers on major decisions.
+## **Core Features**
+1. **User Authentication and Role Management**:
+   - Secure login with Firebase Authentication.
+   - Role-based access for tenants, property managers, contractors, owners, and prospective tenants.
+2. **Tenant Dashboard**:
+   - View leases, payments, maintenance requests, and notifications.
+3. **Maintenance Workflow**:
+   - Submit and track maintenance requests.
+   - Assign contractors and update task statuses.
+4. **Property Management**:
+   - Manage properties, units, and tenant assignments.
+5. **Financial Health Monitoring**:
+   - Reserve fund tracking and automated financial insights.
+6. **Notifications System**:
+   - Real-time alerts for tenants, property managers, and contractors.
+7. **Prospective Tenant Portal**:
+   - Explore available properties, schedule tours, and submit applications.
+8. **Appliance Tracking**:
+   - Monitor appliance health and schedule maintenance.
 
 ---
 
-## **Technology Stack**
-### **Frontend**
-- Framework: React.js (or React Native for mobile)
-- UI Library: Material-UI (or Ant Design)
+## **Tech Stack**
+### **Frontend**:
+- **React.js**: Dynamic and responsive UI framework.
+- **Firebase SDK**: Integrated with Authentication, Firestore, and Storage.
 
-### **Backend**
-- Authentication: Firebase Authentication
-- Database: Firestore (NoSQL)
-- Storage: Firebase Storage for file uploads (e.g., profile photos)
+### **Backend**:
+- **Node.js with Express.js**: Lightweight and scalable backend framework.
+- **Firebase Admin SDK**: Server-side operations for authentication and Firestore.
 
-### **Infrastructure**
-- Hosting: Firebase Hosting or alternative cloud platforms (e.g., AWS, GCP)
+### **Database**:
+- **Firestore (NoSQL)**: Scalable, real-time database.
 
----
-
-## **Database Structure**
-### **Firestore Collections**
-1. **Users**
-   - Stores tenant, property manager, contractor, and owner profiles.
-2. **Properties**
-   - Tracks property details and associated units.
-3. **Units**
-   - Details of each unit (e.g., size, rent, tenant).
-4. **Leases**
-   - Stores lease agreements, terms, and tenant assignments.
-5. **MaintenanceRequests**
-   - Tracks issues reported by tenants and their statuses.
-6. **Notifications**
-   - Central hub for user-specific alerts (e.g., rent reminders, updates).
-7. **Payments**
-   - Tracks tenant rent payments and other fees.
-8. **Appliances**
-   - Logs appliance conditions, service history, and expected replacements.
-9. **Reserves**
-   - Financial planning for property repairs and improvements.
+### **Other Services**:
+- **Firebase Storage**: For file uploads like lease agreements and profile photos.
+- **Stripe/PayPal**: For payment processing (future integration).
 
 ---
 
-## **Setup Instructions**
+## **Developer Setup**
 
 ### **Prerequisites**
-- **Node.js** installed on your system.
-- **Firebase CLI** installed for managing Firebase services.
+- **Node.js**: Version 16 or above.
+- **Firebase Account**: Access to Firebase Console for project setup.
+- **Git**: Version control system.
 
-### **1. Clone the Repository**
-```bash
-git clone https://github.com/your-repo/grey-chair.git
-cd grey-chair
-```
-
-### **2. Install Dependencies**
-```bash
-npm install
-```
-
-### **3. Configure Firebase**
-1. Log in to Firebase using:
+### **Project Setup**
+1. **Clone the repository**:
    ```bash
-   firebase login
+   git clone https://github.com/yourusername/grey-chair.git
+   cd grey-chair
    ```
-2. Initialize Firebase for your project:
+
+2. **Install dependencies**:
    ```bash
-   firebase init
+   npm install
    ```
-3. Replace `firebaseConfig` in the project with your Firebase configuration keys from the Firebase Console.
 
-### **4. Start the Development Server**
-```bash
-npm start
-```
+3. **Set up Firebase**:
+   - Create a Firebase project in the [Firebase Console](https://console.firebase.google.com/).
+   - Enable **Authentication** (email/password), **Firestore**, and **Storage**.
+   - Generate Firebase configuration keys.
 
----
+4. **Configure environment variables**:
+   - Create a `.env` file in the project root:
+     ```plaintext
+     FIREBASE_API_KEY=your_api_key
+     FIREBASE_AUTH_DOMAIN=your_project_id.firebaseapp.com
+     FIREBASE_PROJECT_ID=your_project_id
+     FIREBASE_STORAGE_BUCKET=your_project_id.appspot.com
+     FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+     FIREBASE_APP_ID=your_app_id
+     ```
+   - Replace `your_*` placeholders with your Firebase credentials.
 
-## **Usage**
-
-### **Running Locally**
-1. Start the development server:
+5. **Start the development server**:
    ```bash
    npm start
    ```
-2. Open your browser and navigate to `http://localhost:3000`.
 
-### **Building for Production**
-```bash
-npm run build
+---
+
+## **Project Structure**
+```plaintext
+grey-chair/
+├── public/               # Static assets (HTML, images, etc.)
+├── src/
+│   ├── components/       # Reusable React components
+│   ├── context/          # Context API providers (e.g., AuthContext)
+│   ├── firebase/         # Firebase configuration and service logic
+│   ├── pages/            # Page-level React components
+│   ├── services/         # Backend API and Firestore interaction
+│   ├── styles/           # Global and modular CSS styles
+│   ├── utils/            # Utility functions (e.g., formatters)
+│   └── App.js            # Root React component
+├── .env                  # Environment variables for Firebase configuration
+├── package.json          # Project metadata and dependencies
+└── README.md             # Project documentation
 ```
-Deploy the `build` folder to your hosting environment (e.g., Firebase Hosting).
 
 ---
 
-## **API Overview**
-### **Authentication**
-- **POST** `/api/auth/register`: Register a new user.
-- **POST** `/api/auth/login`: Log in an existing user.
-- **POST** `/api/auth/reset-password`: Trigger a password reset email.
+## **Key Development Areas**
 
-### **Lease Management**
-- **GET** `/api/leases/:userId`: Retrieve lease details for a tenant.
-
-### **Maintenance Requests**
-- **POST** `/api/maintenance`: Submit a maintenance request.
-- **GET** `/api/maintenance/:userId`: View all requests for a tenant.
-- **PATCH** `/api/maintenance/:requestId`: Update maintenance request status.
-
-### **Payments**
-- **POST** `/api/payments`: Submit a rent payment.
-- **GET** `/api/payments/:userId`: Retrieve payment history.
+### **1. Prospective Tenant Workflow**
+1. **Explore Available Properties**:
+   - Public-facing property listing page.
+   - Filters for location, price range, and unit type.
+2. **Schedule Tours**:
+   - Calendar integration for property managers to manage tour requests.
+   - Prospective tenants can request specific time slots.
+3. **Submit Rental Applications**:
+   - Application form for prospective tenants.
+   - Integration with Firestore to store application details.
+   - Notifications for property managers when applications are received.
 
 ---
 
-## **Developer Notes**
-1. **Authentication**: All API endpoints require a Firebase JWT token for access.
-2. **Role-Based Access**: Middleware enforces role permissions (e.g., tenants can access only their data).
-3. **Real-Time Updates**: Firestore listeners are used for real-time updates on notifications and maintenance requests.
+### **2. Tenant Workflow**
+1. **Dashboard**:
+   - View profile, lease details, maintenance requests, and payment history.
+2. **Submit Maintenance Requests**:
+   - Simple form to report issues with optional photo upload.
+3. **View Notifications**:
+   - Rent reminders, maintenance updates, and property news.
+
+---
+
+### **3. Property Management Workflow**
+1. **Manage Properties**:
+   - CRUD operations for properties and units.
+   - Assign tenants to units.
+2. **View Lease Agreements**:
+   - Access lease details and manage renewals.
+3. **Handle Maintenance Requests**:
+   - Assign contractors and track task progress.
+
+---
+
+### **4. Notifications System**
+1. **For Tenants**:
+   - Rent reminders and maintenance updates.
+2. **For Prospective Tenants**:
+   - Tour confirmations and application status updates.
+3. **For Property Managers**:
+   - Overdue rent notifications and maintenance escalations.
+
+---
+
+## **Testing**
+- **Unit Tests**:
+  - Test all backend APIs (e.g., registration, login, role validation).
+- **Integration Tests**:
+  - Test data flow between frontend and backend.
+- **Frontend Tests**:
+  - Use Jest/React Testing Library for UI testing.
 
 ---
 
 ## **Roadmap**
-1. **Phase 1**: Tenant-focused features (dashboard, maintenance, payments).
-2. **Phase 2**: Property management and appliance tracking.
-3. **Phase 3**: Reserve fund calculation and advanced financial tools.
-4. **Phase 4**: Mobile application development (React Native).
+### **Phase 1: MVP Development**
+- Firebase setup (Authentication, Firestore, and Storage).
+- Core workflows for tenants and property managers.
+- Public property listings for prospective tenants.
 
----
+### **Phase 2: Feature Expansion**
+- Advanced notification system.
+- Contractor assignment and appliance tracking.
+- Tenant scoring and property health metrics.
 
-## **Contributing**
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit changes and push:
-   ```bash
-   git commit -m "Add feature"
-   git push origin feature-name
-   ```
-4. Open a pull request on GitHub.
-
----
-
-## **License**
-This project is licensed under the MIT License.
+### **Phase 3: Advanced Features**
+- Reserve fund planning.
+- AI-driven insights for property performance.
+- Integration with third-party tools (e.g., Zillow, QuickBooks).
 
 ---
 
 ## **Contact**
-For questions or feedback, contact the development team at [support@greychair.com](mailto:support@greychair.com).
-
----
-
-Let me know if you need further refinements or additions to the README!
+- **Team**: Grey Chair Development Team
+- **Support Email**: support@greychair.com
+- **GitHub**: [Grey Chair Repository](https://github.com/grey-chair/greychair-ai)
