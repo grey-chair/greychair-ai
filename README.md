@@ -58,7 +58,7 @@ Grey Chair stands out by combining **property health scoring**, **tenant scoring
 ### **Project Setup**
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/grey-chair.git
+   git clone https://github.com/greychar-ai/grey-chair.git
    cd grey-chair
    ```
 
